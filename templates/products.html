@@ -1,0 +1,141 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{{ url_for('clients_information') }}">Our Products</a>
+          </li>
+{#          <li class="breadcrumb-item">#}
+{#            <a href="">{{ mkunywamaji.name }}</a>#}
+{#          </li>#}
+          <li class="breadcrumb-item active">Overview</li>
+          <li>
+               <div class="container-fluid">
+    </div>
+          </li>
+
+        <li>
+              <div class="container-fluid">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newproductModal">
+            Add Product
+        </button>
+
+        <div class="modal fade" id="newproductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Add Products</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form action="new_product" method="POST">
+                            <div class="form-group">
+                                <label for="product_name">Product Name</label>
+                                <input required name="product_name" type="text" class="form-control" id="product_name" placeholder="Enter product's name">
+                            </div>
+
+                             <div class="form-group">
+                                <label for="price">Unit Price</label>
+                                <input required name="price" type="number" class="form-control" id="price" placeholder="Enter unit price">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" class="form-control btn btn-primary">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+          </li>
+
+        </ol>
+
+             <!-- /.container-fluid -->
+            {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <div class="alert alert-info">
+        <li>{{ message }}</li>
+      </div>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i>
+            Clients</div>
+
+            <div>
+
+            </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
+                <thead>
+                    <th>Id</th>
+                    <th>Product Name</th>
+                    <th>Unit Price</th>
+                    <th>Update</th>
+                </thead>
+                <tbody>
+                {% for each in products %}
+                    <tr>
+                        <td>{{ each.id }}</td>
+                        <td>{{ each.product_name }}</td>
+                        <td>{{ each.price }}</td>
+                        <td>
+                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal{{ each.id }}">
+                            Edit
+                        </button>
+                        <!-- The Modal -->
+                        <div class="modal fade" id="modal{{ each.id }}">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Update {{ each.product_name }}</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <form action="/editproduct/{{ each.id }}" method="post">
+                                            <div class="form-group">
+                                                <label for="product_name">Product Name</label>
+                                                <input value="{{ each.product_name }}" required name="product_name" type="text" class="form-control" id="product_name" placeholder="Update product name">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="price">Unit Price</label>
+                                                <input value="{{ each.price }}" required name="price" type="number" class="form-control" id="price" placeholder="Update Unit Price">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="submit" class="form-control btn btn-primary">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+{% endblock %}

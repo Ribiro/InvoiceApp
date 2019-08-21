@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="">{{ client.client_name }}</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="">Invoices</a>
+          </li>
+          <li class="breadcrumb-item active">Overview</li>
+          <li>
+               <div class="container-fluid">
+    </div>
+          </li>
+            <li>
+                <div class="">
+                    <form action="/generate_invoice/{{ client.id }}" method="POST">
+                        <div class="form-group btn-sm">
+                            <a type="submit" href="#"><button class="btn btn-primary btn-sm">Generate Invoice</button></a>
+                        </div>
+                    </form>
+                </div>
+
+          </li>
+
+        </ol>
+          <!-- Page Heading -->
+        </div>
+        <!-- /.container-fluid -->
+
+
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i>
+            Clients</div>
+
+            <div>
+
+            </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
+                <thead>
+                    <th>Id</th>
+                    <th>Invoice No</th>
+                    <th>Particulars</th>
+                    <th>Date</th>
+{#                    <th>Remove</th>#}
+                </thead>
+
+                <tbody>
+                {% for each in client.invoices %}
+                <tr>
+                    <td>{{ each.id }}</td>
+                    <td>{{ each.invoice_no }}</td>
+                    <td><a href="/invoice_products/{{ each.id }}"><button class="btn btn-info btn-sm">View</button></a></td>
+                    <td>{{ each.date }}</td>
+                </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+{% endblock content %}

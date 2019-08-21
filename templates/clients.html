@@ -1,0 +1,170 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{{ url_for('clients_information') }}">Clients Information</a>
+          </li>
+{#          <li class="breadcrumb-item">#}
+{#            <a href="">{{ mkunywamaji.name }}</a>#}
+{#          </li>#}
+          <li class="breadcrumb-item active">Overview</li>
+          <li>
+               <div class="container-fluid">
+    </div>
+          </li>
+
+        <li>
+              <div class="container-fluid">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newclientModal">
+            Add Client
+        </button>
+
+        <div class="modal fade" id="newclientModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Add Dairy Products Client</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form action="new_client" method="POST">
+                            <div class="form-group">
+                                <label for="client_name">Client Name</label>
+                                <input required name="client_name" type="text" class="form-control" id="client_name" placeholder="Enter client's name">
+                            </div>
+
+                             <div class="form-group">
+                                <label for="branch">Branch</label>
+                                <input required name="branch" type="text" class="form-control" id="branch" placeholder="Enter branch">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone_number">Phone Number</label>
+                                <input required name="phone_number" type="text" class="form-control" id="phone_number" placeholder="Enter client's mobile number">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input required name="email" type="text" class="form-control" id="email" placeholder="Enter email address">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="form-control btn btn-primary">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+          </li>
+
+        </ol>
+
+             <!-- /.container-fluid -->
+            {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <div class="alert alert-info">
+        <li>{{ message }}</li>
+      </div>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i>
+            Clients</div>
+
+            <div>
+
+            </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
+                <thead>
+                    <th>Id</th>
+                    <th>Client Name</th>
+                    <th>Branch</th>
+                    <th>Email Address</th>
+                    <th>Phone Number</th>
+                    <th>Update</th>
+                    <th>Invoices</th>
+                    <th>Statements</th>
+{#                    <th>Remove</th>#}
+                </thead>
+                <tbody>
+                {% for each in clients %}
+                    <tr>
+                        <td>{{ each.id }}</td>
+                        <td>{{ each.client_name }}</td>
+                        <td>{{ each.branch }}</td>
+                        <td>{{ each.email }}</td>
+                        <td>{{ each.phone_number }}</td>
+                        <td>
+                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal{{ each.id }}">
+                            Edit
+                        </button>
+                        <!-- The Modal -->
+                        <div class="modal fade" id="modal{{ each.id }}">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Update {{ each.client_name }}</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <form action="/editclient/{{ each.id }}" method="post">
+                                            <div class="form-group">
+                                                <label for="client_name">Client Name</label>
+                                                <input value="{{ each.client_name }}" required name="client_name" type="text" class="form-control" id="client_name" placeholder="Update client's name">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="branch">Branch</label>
+                                                <input value="{{ each.branch }}" required name="branch" type="text" class="form-control" id="branch" placeholder="Update client's branch">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="phone_number">Phone Number</label>
+                                                <input value="{{ each.phone_number }}" required name="phone_number" type="text" class="form-control" id="phone_number" placeholder="Update client's Phone Number">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input value="{{ each.email }}" required name="email" type="text" class="form-control" id="email" placeholder="Update Unit Price">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="submit" class="form-control btn btn-primary">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><a href="/create_invoice/{{ each.id }}"><button class="btn btn-info btn-sm">View</button></a></td>
+                    <td><a href="/statements/{{ each.id }}"><button class="btn btn-primary btn-sm">Details</button></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+{% endblock content %}

@@ -1,4 +1,4 @@
-from app import db
+from main import db
 
 
 class InvoiceProductsModel(db.Model):

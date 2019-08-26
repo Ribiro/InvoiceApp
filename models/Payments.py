@@ -1,4 +1,4 @@
-from app import db
+from main import db
 
 
 class PaymentsModel(db.Model):
@@ -12,6 +12,7 @@ class PaymentsModel(db.Model):
     amount = db.Column(db.Integer)
     balance = db.Column(db.Integer)
     date = db.Column(db.String())
+    search_date = db.Column(db.String())
 
     client_id = db.Column(db.Integer, db.ForeignKey('clients.id'))
 
@@ -36,3 +37,8 @@ class PaymentsModel(db.Model):
     def check_invoice_no(cls, invoice_no):
         record = cls.query.filter_by(invoice_no=invoice_no).first()
         return record
+
+    # fetch by search_date
+    @classmethod
+    def fetch_by_search_date(cls, search_date):
+        return cls.query.filter_by(search_date=search_date).all()

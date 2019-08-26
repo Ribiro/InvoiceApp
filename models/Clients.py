@@ -1,4 +1,4 @@
-from app import db
+from main import db
 from models.Invoices import InvoicesModel
 from models.Payments import PaymentsModel
 
@@ -11,6 +11,8 @@ class ClientsModel(db.Model):
     branch = db.Column(db.String())
     email = db.Column(db.String(), unique=True)
     phone_number = db.Column(db.String())
+
+    system_user_id = db.Column(db.Integer, db.ForeignKey('system_users.id'))
 
     # pseudo column
     invoices = db.relationship(InvoicesModel, backref='client')

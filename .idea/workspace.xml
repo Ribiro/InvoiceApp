@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4dd47e70-3a0b-4df3-992d-08629d451f82" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/models/Auth.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Clients.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/Clients.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Invoice_products.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/Invoice_products.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Invoices.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/Invoices.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Payments.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/Payments.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Products.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/Products.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/invoice_products.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/invoice_products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/statements.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/statements.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-    </list>
+    <list default="true" id="4dd47e70-3a0b-4df3-992d-08629d451f82" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -302,23 +285,22 @@
       <workItem from="1566672492309" duration="6949000" />
       <workItem from="1566750524651" duration="1014000" />
       <workItem from="1566758098691" duration="7903000" />
-      <workItem from="1566799010934" duration="1315000" />
+      <workItem from="1566799010934" duration="1577000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="154737000" />
+    <option name="totallyTimeSpent" value="154999000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="1" width="1366" height="767" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3335878" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3335878" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.48220065" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.25566342" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />

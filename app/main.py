@@ -10,7 +10,7 @@ app.config.from_object(Development)
 # app.config.from_object(Production)
 
 # create an instance of SQLAlchemy
-db = SQLAlchemy(app)
+db = SQLAlchemy(app)    
 
 from models.Products import ProductsModel
 from models.Clients import ClientsModel

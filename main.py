@@ -18,6 +18,7 @@ from models.Invoices import InvoicesModel
 from models.Invoice_products import InvoiceProductsModel
 from models.Payments import PaymentsModel
 from models.Auth import AuthModel
+
 # create tables in our database
 @app.before_first_request
 def create_tables():
@@ -73,7 +74,6 @@ def register():
 def logout():
     session.clear()
     return redirect(url_for('login'))
-
 
 @app.route('/home')
 @login_required
